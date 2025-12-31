@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      fetch("http://localhost:3000/books", {
+      fetch("https://book-api-o0b9.onrender.com/books", {
         headers: {
           Authorization: token,
         },
@@ -26,7 +26,7 @@ function App() {
 
   const handleSubmit = async () => {
     if (editId) {
-      await fetch(`http://localhost:3000/books/${editId}`, {
+      await fetch(`https://book-api-o0b9.onrender.com/books/${editId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ function App() {
       });
       setEditId(null);
     } else {
-      await fetch("http://localhost:3000/books", {
+      await fetch("https://book-api-o0b9.onrender.com/books", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ function App() {
         body: JSON.stringify({ title, author, year }),
       });
     }
-    const res = await fetch("http://localhost:3000/books", {
+    const res = await fetch("https://book-api-o0b9.onrender.com/books", {
       headers: { Authorization: token },
     });
     const data = await res.json();
@@ -63,12 +63,12 @@ function App() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:3000/books/${id}`, {
+    await fetch(`https://book-api-o0b9.onrender.com/books/${id}`, {
       method: "DELETE",
       headers: { Authorization: token },
     });
 
-    const res = await fetch("http://localhost:3000/books", {
+    const res = await fetch("https://book-api-o0b9.onrender.com/books", {
       headers: { Authorization: token },
     });
     const data = await res.json();
@@ -76,7 +76,7 @@ function App() {
   };
 
   const handleLogin = async () => {
-    const res = await fetch("http://localhost:3000/login", {
+    const res = await fetch("https://book-api-o0b9.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -89,7 +89,7 @@ function App() {
   };
 
   const handleRegister = async () => {
-    const res = await fetch("http://localhost:3000/register", {
+    const res = await fetch("https://book-api-o0b9.onrender.com/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
